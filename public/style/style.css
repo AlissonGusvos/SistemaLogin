@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: "Open Sans", sans-serif;
+}
+
+.background-login {
+    background: url(../images/bg-1.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.login-form-container {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    height: 80%;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(9.4px);
+    -webkit-backdrop-filter: blur(9.4px);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.login-form-container-title {
+    margin-bottom: 50px;
+}
+
+.login-form-container-title h4 {
+    font-size: 18px;
+    color: #151515;
+    font-weight: 400px;
+}
+
+.form-login {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-login > input {
+    width: 80%;
+    height: 55px;
+    border-radius: 30px;
+    padding: 0 25px;
+    margin-bottom: 10px;
+}
+
+.form-login > input:focus {
+    outline: none;
+}
+
+.form-login > input[type=text],
+.form-login > input[type=password] {
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.form-login > input[type=submit] {
+    background-color: #ec4c02;
+    color: white;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.register-redirect span {
+    color: #151515;
+    font-size: 12px;
+}
+
+.register-redirect a {
+    color: #ec4c02;
+    font-style: oblique;
+    font-weight: 600;
+}
