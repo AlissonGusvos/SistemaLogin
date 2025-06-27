@@ -1,19 +1,36 @@
-class Auth {
-    constructor(){
-        this.user = new Map();
+const connection = require('../config/db');
 
-        this.user.set('username','Gustavo');
-        this.user.set('password','1234');
+class Auth {
+
+    constructor(){
+        
     }
 
-    login(username,password) {
-        if(this.user.get('username') !== username){
-            throw new Error("Usuario errado!");
+    async login(username,password) {
+
+        try {
+            const user = await this.searchUser(username,password);
+            if (!user || user.nome !== username || user.senha !== password) {
+                console.log("Usuario ou senha incorretos!");
+                return false;
+            }
+            console.log('Sucesso Login');
+            return true;
         }
-        if(this.user.get('password') !== password){
-            throw new Error("Senha errada!");
+        catch (err) {
+            console.error('Erro no login: ', err);
+            return false;
         }
-        return true;
+    }
+
+    searchUser(username,password) {
+        return new Promise((resolve, reject)=>{
+            const sql = 'SELECT * FROM usuarios WHERE nome = ? AND senha = ?';
+            connection.query(sql, [username,password], (err,results)=>{
+                if (err) return reject(err);
+                resolve(results[0]);
+            });
+        });
     }
 }
 

@@ -1,8 +1,8 @@
+require('dotenv').config();
+
 const express = require("express");
 const app = express();
 const path = require('path');
-
-const PORT = 3000;
 
 /* CONFIG MIDDLEWARE */
 app.use(express.urlencoded({ extended: true }));
@@ -17,6 +17,6 @@ const indexRoute = require("./routes/index");
 
 app.use('/',indexRoute);
 
-app.listen(PORT,()=>{
-    console.log(`Application running | ${PORT}`);
+app.listen(process.env.PORT,()=>{
+    console.log(`Application running`);
 })
