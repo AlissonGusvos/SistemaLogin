@@ -4,6 +4,9 @@ const path = require('path');
 
 const PORT = 3000;
 
+/* CONFIG MIDDLEWARE */
+app.use(express.urlencoded({ extended: true }));
+
 /* CONFIG EJS */
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
