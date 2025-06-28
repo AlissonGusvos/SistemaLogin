@@ -56,6 +56,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 15px;
 }
 
 .form-login > input {
@@ -84,6 +85,11 @@ body {
     cursor: pointer;
 }
 
+.register-redirect {
+    position: absolute;
+    bottom: 30px;
+}
+
 .register-redirect span {
     color: #151515;
     font-size: 12px;
@@ -93,4 +99,24 @@ body {
     color: #ec4c02;
     font-style: oblique;
     font-weight: 600;
+}
+
+#message-box {
+    width: 300px;
+    height: 60px;
+    background-color: #ff4242;
+    border-radius: 10px;
+    border-bottom: 6px solid #df1d1d;
+    position: relative;
+    bottom: 15px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    justify-content: center;
+    align-items: center;
+}
+
+#message-box > p {
+    color: white;
+    font-size: 16px;
 }

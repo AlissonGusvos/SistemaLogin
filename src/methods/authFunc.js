@@ -2,24 +2,20 @@ const connection = require('../config/db');
 
 class Auth {
 
-    constructor(){
-        
-    }
+    constructor(){}
 
     async login(username,password) {
 
         try {
             const user = await this.searchUser(username,password);
             if (!user || user.nome !== username || user.senha !== password) {
-                console.log("Usuario ou senha incorretos!");
-                return false;
+                return 401;
             }
-            console.log('Sucesso Login');
-            return true;
+            return 200;
         }
         catch (err) {
             console.error('Erro no login: ', err);
-            return false;
+            return 402;
         }
     }
 
