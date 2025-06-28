@@ -14,16 +14,22 @@
                 <h4>Faça Login</h4>
             </div><!--LOGIN FORM CONTAINER TITLE-->
 
-            <form class="form-login" action="/" method="post">
+            <form class="form-login" id="loginForm" action="/" method="post">
                 <input type="text" name="user" placeholder="Usuário">
-                <input type="password" name="password" placeholder="Senha">
+                <input type="password" name="password" placeholder="Senha" autocomplete="off">
                 <input type="submit" value="Login" name="acao">
             </form><!--FORM LOGIN-->
+
+            <div id="message-box"></div>
 
             <div class="register-redirect">
                 <span>Ainda não tem conta? <a href="#">Cadastre-se</a></span>
             </div><!--REGISTER REDIRECT-->
         </div><!--LOGIN FORM CONTAINER-->
+
     </section><!--MAIN BACKGROUND LOGIN-->
+
+    <script src="/js/script.js"></script>
+
 </body>
 </html>
