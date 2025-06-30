@@ -1,4 +1,5 @@
-const connection = require('../config/db');
+const pool = require('../config/db');
+const bcrypt = require('bcrypt');
 
 class Auth {
 
@@ -19,20 +20,29 @@ class Auth {
         }
     }
 
-    searchUser(username,password) {
-        return new Promise((resolve, reject)=>{
-            const sql = 'SELECT * FROM usuarios WHERE nome = ? AND senha = ?';
-            connection.query(sql, [username,password], (err,results)=>{
-                if (err) return reject(err);
-                resolve(results[0]);
-            });
-        });
+    async passwordEncrypt(password){
+        const saltRounds = 10;
+        const hash = await bcrypt.hash(password, saltRounds);
+        return hash;
     }
+
+    async searchUser(username, password) {
+        try {
+            const sql = 'SELECT * FROM usuarios WHERE nome = ? AND senha = ?';
+            const [rows] = await pool.execute(sql, [username, password]);
+            return rows[0] || null;
+        }  
+        catch (err) {
+            throw err;
+        }
+    }
+
 
     async register(username,password,email) {
         try {
+            const passwordEncrypted = await this.passwordEncrypt(password);
             const sql = 'INSERT INTO usuarios (nome, senha, email) VALUES (?,?,?)';
-            await connection.execute(sql, [username, password, email]);
+            await pool.execute(sql, [username, passwordEncrypted, email]);
             console.log('Registrado');
             return 200;
         }
