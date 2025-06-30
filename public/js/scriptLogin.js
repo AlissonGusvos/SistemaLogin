@@ -14,20 +14,24 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     const result = await response.json();
     
     //  LANÇA O ALERTBOX
-    if (result.success == false) {
-       //alert(result.error);
-       const alertBox = document.getElementById('message-box');
-       const messageText = document.createElement('p');
-       messageText.textContent = result.error;
-       alertBox.appendChild(messageText);
-       alertBox.style.display = "flex";
-       requestAnimationFrame(()=>{
+
+if (result.success === false) {
+    const alertBox = document.getElementById('message-box');
+    const textAlert = document.getElementById('text-alert');
+    textAlert.textContent = result.error;
+    alertBox.style.display = "flex";
+    requestAnimationFrame(() => {
         alertBox.style.opacity = 1;
-       })
-       
-    }
-    if (result.success == true) {
-        window.location.href = result.redirect;
-    }
+    });
+    setTimeout(() => {
+        requestAnimationFrame(() => {
+            alertBox.style.opacity = 0;
+        });
+    }, 5000);
+} 
+if (result.success === true) {
+    window.location.href = result.redirect;
+}
+
     
 })
