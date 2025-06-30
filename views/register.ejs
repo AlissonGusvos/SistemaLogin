@@ -14,16 +14,17 @@
                 <h4>Faça Login</h4>
             </div><!--LOGIN FORM CONTAINER TITLE-->
 
-            <form class="form-login" id="loginForm" action="/" method="post">
+            <form class="form-register" id="registerForm" action="/register" method="post">
                 <input type="text" name="user" placeholder="Usuário">
+                <input type="text" name="email" placeholder="E-Mail">
                 <input type="password" name="password" placeholder="Senha" autocomplete="off">
-                <input type="submit" value="Login" name="acao">
+                <input type="submit" value="Cadastrar" name="acao">
             </form><!--FORM LOGIN-->
 
-            <div id="message-box"><p id="text-alert"></p></div>
+            <div id="message-box"></div>
 
             <div class="register-redirect">
-                <span>Ainda não tem conta? <a href="/register">Cadastre-se</a></span>
+                <span>Ainda não tem conta? <a href="#">Cadastre-se</a></span>
             </div><!--REGISTER REDIRECT-->
         </div><!--LOGIN FORM CONTAINER-->
 

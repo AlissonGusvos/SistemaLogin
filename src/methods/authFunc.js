@@ -28,6 +28,19 @@ class Auth {
             });
         });
     }
+
+    async register(username,password,email) {
+        try {
+            const sql = 'INSERT INTO usuarios (nome, senha, email) VALUES (?,?,?)';
+            await connection.execute(sql, [username, password, email]);
+            console.log('Registrado');
+            return 200;
+        }
+        catch (err) {
+            console.error('Erro ao cadastrar: ', err);
+            return 401;
+        }
+    }
 }
 
 module.exports = Auth;

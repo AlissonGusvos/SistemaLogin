@@ -16,9 +16,11 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 const indexRoute = require("./routes/index");
 const logadoRoute = require("./routes/logado");
+const registerRoute = require("./routes/register");
 
 app.use('/',indexRoute);
 app.use('/logado',logadoRoute);
+app.use('/register',registerRoute);
 
 app.listen(process.env.PORT,()=>{
     console.log(`Application running`);
